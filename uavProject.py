@@ -45,6 +45,7 @@ import imutils
 #        cv2.imwrite('./output/3.clahe/' + str(file_list[i]), fImage)
 #        i += 1
 
+
 def gausThresh():
     labVal = []
     path_dir = './input'
@@ -242,9 +243,13 @@ def findCoat():
         
 def findALL():
     labVal = []
+    print("균열 데이터 분석을 시작합니다.")
     findCrack()
+    print("누수 데이터 분석을 시작합니다.")
     findLeak()
+    print("백태 데이터 분석을 시작합니다.")
     findCoat()
+
 
 def printCrack(imagePath, imageName):
     img = cv2.imread(imagePath)
@@ -349,6 +354,8 @@ def printALL():
         printTotal(coat_file_list[k], crackPercentage, leakPercentage, coatPercentage)
         k += 1
 
+
 if __name__ == "__main__":
     findALL()
+    print("종합 교량 데이터 분석을 시작합니다. 분석이 완료되면 콘솔창은 자동으로 종료됩니다.")
     printALL()
